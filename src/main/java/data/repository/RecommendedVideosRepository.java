@@ -10,8 +10,14 @@ import java.util.List;
  */
 public class RecommendedVideosRepository {
 
+    public RecommendedVideosRepository(){}
+
     public List<RecommendedVideos> getAllWatchedVideoTrackingCodesNew(String username, boolean alwaysNew) {
         /* TODO: implement this correctly from db*/
         return Collections.emptyList();
+    }
+
+    public void testing(){
+        System.out.println("test");
     }
 }

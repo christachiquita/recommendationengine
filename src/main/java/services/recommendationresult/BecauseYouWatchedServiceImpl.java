@@ -1,7 +1,7 @@
 package services.recommendationresult;
 
 import data.repository.RecommendedVideosRepository;
-import data.repository.StaffRepository;
+import interfaces.services.BecauseYouWatchedService;
 import models.apimodel.BecauseYouWatch;
 import models.apimodel.RecommendationViewModel;
 import models.apimodel.RecommendedVideos;
@@ -17,20 +17,19 @@ import java.util.stream.Collectors;
 /**
  * Created by christachiquita on 21/07/2017.
  */
-public class BecauseYouWatchedService extends BaseService {
+public class BecauseYouWatchedServiceImpl extends BaseService implements BecauseYouWatchedService{
 
-    private static StaffRepository                 _staffRepository;
-    private static RecommendedVideosRepository     _recommendationRepository;
+    private static RecommendedVideosRepository recommendationRepository;
 
-    public BecauseYouWatchedService(StaffRepository staffRepository, RecommendedVideosRepository recommendedVideoRepository){
-        this._staffRepository                 = staffRepository;
-        this._recommendationRepository        = recommendedVideoRepository;
+    public BecauseYouWatchedServiceImpl(RecommendedVideosRepository recommendedVideoRepository){
+        this.recommendationRepository = recommendedVideoRepository;
     }
 
+    @Override
     public RecommendationViewModel getRecommendations(String username){
         debugLog("Start Recommendation Service for " + username);
         try{
-            List<RecommendedVideos> becauseYouWatchedRecommendation = _recommendationRepository
+            List<RecommendedVideos> becauseYouWatchedRecommendation = recommendationRepository
                     .getAllWatchedVideoTrackingCodesNew(username, false).stream().distinct().collect(Collectors.toList());
 
             List<BecauseYouWatch> becauseYouwatchRecommendation = this
