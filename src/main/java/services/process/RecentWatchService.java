@@ -1,7 +1,7 @@
 package services.process;
 
 import data.repository.WatchHistoryRepository;
-import models.data.VideoUserPair;
+import models.data.VideoByUser;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +18,7 @@ public class RecentWatchService {
         this.watchHistoryRepository = watchHistoryRepository;
     }
 
-    public List<VideoUserPair> getRecentHistory(String username){
+    public List<VideoByUser> getRecentHistory(String username){
         return watchHistoryRepository.getVideosByUsername(username)
                 .stream()
                 .collect(Collectors.groupingBy(user -> user.getVideoId()))

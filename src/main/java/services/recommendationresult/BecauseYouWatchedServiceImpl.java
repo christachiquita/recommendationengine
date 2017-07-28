@@ -47,14 +47,14 @@ public class BecauseYouWatchedServiceImpl extends BaseService implements Because
         List<BecauseYouWatch> result = new ArrayList<>();
 
         List<String> watchedTrackingCodes = recommendation.stream()
-                .map(i -> i.watchedVideoTrackingCode)
+                .map(i -> i.watchedVideoId)
                 .distinct()
                 .collect(Collectors.toList());
 
         watchedTrackingCodes.stream().forEach(trackingCode -> {
             int max = Constants.MAX_NUM_OF_RECOMMENDATION;
             List<VideoScore> finalRecommendation = recommendation.stream()
-                    .filter(video -> video.watchedVideoTrackingCode.equals(trackingCode))
+                    .filter(video -> video.watchedVideoId.equals(trackingCode))
                     .limit(max)
                     .collect(Collectors.toList());
 

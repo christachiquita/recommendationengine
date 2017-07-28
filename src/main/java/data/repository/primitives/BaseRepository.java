@@ -19,7 +19,5 @@ public class BaseRepository {
         this.mappingManager = new MappingManager(this.session);
     }
 
-    public MappingManager getMappingManager(){
-        return this.mappingManager;
-    }
+
 }

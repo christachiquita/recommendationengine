@@ -1,5 +1,8 @@
 package models.data;
 
+import com.datastax.driver.mapping.annotations.ClusteringColumn;
+import com.datastax.driver.mapping.annotations.PartitionKey;
+
 import java.util.Date;
 
 /**

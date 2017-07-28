@@ -1,6 +1,6 @@
 package data.repository;
 
-import models.data.VideoUserPair;
+import models.data.VideoByUser;
 
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class WatchHistoryRepository {
 
-    public List<VideoUserPair> getVideosByUsername(String username){
+    public List<VideoByUser> getVideosByUsername(String username){
         /* TODO: Implement Fetch using cql statement */
         return Collections.emptyList();
     }

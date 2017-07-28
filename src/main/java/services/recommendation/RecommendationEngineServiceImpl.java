@@ -35,7 +35,7 @@ public class RecommendationEngineServiceImpl extends BaseService implements Reco
         List<RecommendedVideos> watchedVideos = recommendedVideoRepository.getAllWatchedVideoTrackingCodesNew(username, true);
 
         if (watchedVideos.isEmpty()){
-            List<VideoUserPair> recentVideos = recentWatchService.getRecentHistory(username);
+            List<VideoByUser> recentVideos = recentWatchService.getRecentHistory(username);
 
             if (recentVideos.isEmpty()) return;
 
@@ -46,11 +46,7 @@ public class RecommendationEngineServiceImpl extends BaseService implements Reco
                     break;
                 }
 
-                VideoUserPair recentVideo = recentVideos.get(i);
-
-                VideoByUser targetVideo = new VideoByUser(recentVideo.getId(),
-                        recentVideo.getUsername(), recentVideo.getVideoId(),
-                        new ArrayList<ScoredRecommendedVideo>());
+                VideoByUser targetVideos = recentVideos.get(i);
 
                 /* TODO : continue here*/
             }
